@@ -9,6 +9,34 @@
       Title="RecordService">
 
     <Grid Background="White">
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="40">Записать на услугу</TextBlock>
+        <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10 0" Click="Button_Click_Exit">
+            <Image Source="/Clients/ArrowBT.png"/>
+        </Button>
+        <Border Grid.Row="1" BorderBrush="#ff9c1a" BorderThickness="1.5" Margin="5,5,5,5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 70">
+                <StackPanel Orientation="Vertical" Margin="10 0 10 0">
+                    <TextBlock FontSize="20">Клиент</TextBlock>
+                    <ComboBox x:Name="ClientCB" Width="140" Height="40" FontSize="24" DisplayMemberPath="{Binding Client.FirstName}"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="10 0 10 0">
+                    <TextBlock FontSize="20">Услуга</TextBlock>
+                    <ComboBox x:Name="ServiceCB" Width="260" Height="40" FontSize="24" DisplayMemberPath="{Binding Service.Title}"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="10 0 10 0">
+                    <TextBlock FontSize="20">Время</TextBlock>
+                    <DatePicker Width="260" Height="40" FontSize="24" x:Name="DateRecord"></DatePicker>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Button Grid.Row="2" Width="300" Height="45" Click="Button_Click_Save" >
+            <TextBlock FontSize="30" Text="Сохранить"/>
+        </Button>
     </Grid>
 </Page>

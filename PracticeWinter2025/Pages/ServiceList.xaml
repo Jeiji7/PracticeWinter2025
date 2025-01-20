@@ -9,6 +9,39 @@
       Title="ServiceList">
 
     <Grid Background="White">
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="40">Записи на услуги</TextBlock>
+        <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10 0" Click="Button_Click_Exit">
+            <Image Source="/Clients/ArrowBT.png"/>
+        </Button>
+        <ListView Grid.Row="1" Margin="5" x:Name="ListRecordServiceLV">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="№" Width="40" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                        <GridViewColumn Header="Фамилия" Width="130" DisplayMemberBinding="{Binding Client.FirstName}"></GridViewColumn>
+                        <GridViewColumn Header="Телефон" Width="130" DisplayMemberBinding="{Binding Client.Phone}"></GridViewColumn>
+                        <GridViewColumn Header="Название услуги" Width="270">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  TextWrapping="Wrap" Text="{Binding Service.Title}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Дата и время" Width="170">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  TextWrapping="Wrap" Text="{Binding StartTime}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

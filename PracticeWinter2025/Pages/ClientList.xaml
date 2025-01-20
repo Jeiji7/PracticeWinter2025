@@ -9,6 +9,46 @@
       Title="ClientList">
 
     <Grid Background="White">
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="40">Список клиентов</TextBlock>
+        <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10 0" Click="Button_Click_Exit">
+            <Image Source="/Clients/ArrowBT.png"/>
+        </Button>
+        <Button Width="60" Height="40" HorizontalAlignment="Right" Margin="10 0" Background="IndianRed" Click="Button_Click_Delete">
+            Удалить
+        </Button>
+        <Button Width="60" Height="40" HorizontalAlignment="Right" Margin="10 0 80 0" Background="GreenYellow" Click="Button_Click_Edit">
+            Изменить
+        </Button>
+        <ListView Grid.Row="1" Margin="5" x:Name="ListClientLV">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="№" Width="40" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                        <GridViewColumn Header="Фамилия" Width="130" DisplayMemberBinding="{Binding FirstName}"></GridViewColumn>
+                        <GridViewColumn Header="Имя" Width="130" DisplayMemberBinding="{Binding LastName}"></GridViewColumn>
+                        <GridViewColumn Header="Телфон" Width="120" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
+                        <GridViewColumn Header="Фото" Width="160">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding PhotoPath}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Дата регистрации" Width="170">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  TextWrapping="Wrap" Text="{Binding RegistrationDate}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

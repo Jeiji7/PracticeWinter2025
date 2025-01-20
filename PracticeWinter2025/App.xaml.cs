@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PracticeWinter2025.db;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace PracticeWinter2025
     /// </summary>
     public partial class App : Application
     {
+        public static uchebkaCarService2025Entities db = new uchebkaCarService2025Entities();
     }
 }

@@ -24,5 +24,31 @@ namespace PracticeWinter2025.Pages
         {
             InitializeComponent();
         }
+
+
+        private void Button_Click_Exit(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.Authorization());
+        }
+
+        private void Button_Click_ClientList(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.ClientList());
+        }
+
+        private void Button_Click_RecordView(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.ServiceList());
+        }
+
+        private void Button_Click_Record(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.RecordService());
+        }
+
+        private void Button_Click_AddClient(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.AddClient());
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PracticeWinter2025.db;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace PracticeWinter2025.Pages
     /// </summary>
     public partial class EditClient : Page
     {
-        public EditClient()
+        public EditClient(Client client)
         {
             InitializeComponent();
         }

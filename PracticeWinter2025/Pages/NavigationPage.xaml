@@ -9,6 +9,33 @@
       Title="NavigationPage">
 
     <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
 
+        <TextBlock FontSize="40">Панель навигации</TextBlock>
+        <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10 0" Click="Button_Click_Exit">
+            <Image Source="/Clients/ArrowBT.png"/>
+        </Button>
+
+        <Border Grid.Row="1" BorderBrush="#ff9c1a" BorderThickness="1.5" Margin="5,5,5,5">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Height="50" Width="200" Click="Button_Click_ClientList">
+                    <TextBlock FontSize="20" Text="Список клиентов"/>
+                </Button>
+                <Button Height="50" Width="200" Click="Button_Click_AddClient">
+                    <TextBlock FontSize="20" Text="Добавить клиента"/>
+                </Button>
+                <Button Height="50" Width="200" Click="Button_Click_RecordView">
+                    <TextBlock FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Text="Просмотр записей на услуги"/>
+                </Button>
+                <Button Height="50" Width="200" Click="Button_Click_Record">
+                    <TextBlock FontSize="20" Text="Записать на услугу"/>
+                </Button>
+                
+            </StackPanel>
+
+        </Border>
     </Grid>
 </Page>

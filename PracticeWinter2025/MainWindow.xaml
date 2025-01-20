@@ -8,5 +8,8 @@
         Title="Car service" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Icon="/Clients/service_logo.ico">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <Border BorderBrush="#ffffe1" BorderThickness="1.5">
+            
+        </Border>
     </Grid>
 </Window>
