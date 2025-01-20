@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:PracticeWinter2025"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock">
+            <Setter Property="Control.FontFamily" Value="Tw Cen MT"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </Application.Resources>
 </Application>
