@@ -14,6 +14,6 @@ namespace PracticeWinter2025
     /// </summary>
     public partial class App : Application
     {
-        public static uchebkaCarService2025Entities db = new uchebkaCarService2025Entities();
+        public static uchebkaCarServiceEgor2025Entities db = new uchebkaCarServiceEgor2025Entities();
     }
 }

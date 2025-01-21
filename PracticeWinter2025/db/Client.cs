@@ -28,7 +28,7 @@ namespace PracticeWinter2025.db
         public System.DateTime RegistrationDate { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string GenderCode { get; set; }
+        public int GenderCode { get; set; }
         public string PhotoPath { get; set; }
         public Nullable<bool> ActiceClient { get; set; }
     

@@ -23,12 +23,12 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="№" Width="40" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                        <GridViewColumn Header="Фамилия" Width="130" DisplayMemberBinding="{Binding Client.FirstName}"></GridViewColumn>
-                        <GridViewColumn Header="Телефон" Width="130" DisplayMemberBinding="{Binding Client.Phone}"></GridViewColumn>
+                        <GridViewColumn Header="Фамилия" Width="130" DisplayMemberBinding="{Binding FirstName}"></GridViewColumn>
+                        <GridViewColumn Header="Телефон" Width="130" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
                         <GridViewColumn Header="Название услуги" Width="270">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  TextWrapping="Wrap" Text="{Binding Service.Title}"/>
+                                    <TextBlock  TextWrapping="Wrap" Text="{Binding Title}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

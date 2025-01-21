@@ -21,11 +21,12 @@ namespace PracticeWinter2025.Pages
     /// </summary>
     public partial class RecordService : Page
     {
+        private Client _client;
         private ClientService _clientService = new ClientService();
         public RecordService()
         {
             InitializeComponent();
-            var client = App.db.Client.ToList();
+            var client = App.db.Client.Where(x => x.ActiceClient == true).ToList();
             ClientCB.ItemsSource = client.ToList();
             ClientCB.DisplayMemberPath = "FirstName";
             var service = App.db.Service.ToList();
@@ -48,7 +49,9 @@ namespace PracticeWinter2025.Pages
             }
             try
             {
-                _clientService.ClientID = (ClientCB.SelectedIndex + 1);
+                _client = (Client)ClientCB.SelectedItem;
+                _clientService.ClientID = _client.ID;
+                //_clientService.ClientID = (ClientCB.SelectedIndex + 1);
                 _clientService.ServiceID = ServiceCB.SelectedIndex + 1;
                 _clientService.StartTime = DateRecord.SelectedDate.Value;
                 App.db.ClientService.Add(_clientService);
