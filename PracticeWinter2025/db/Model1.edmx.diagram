@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2cf505cc87f547ecacfc12a3d34e105c" Name="Diagram1">
-        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.Client" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.ClientService" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.Gender" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.Service" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="uchebkaCarServiceEgor2025Model.FK_Client_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="uchebkaCarServiceEgor2025Model.FK_ClientService_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="uchebkaCarServiceEgor2025Model.FK_ClientService_Service" ManuallyRouted="false" />
+      <Diagram DiagramId="ffe89692b1e74656a591d7a4c87be203" Name="Diagram1">
+        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.Client" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.ClientService" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.Gender" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.Service" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="uchebkaCarServiceEgor2025Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
+        <AssociationConnector Association="uchebkaCarServiceEgor2025Model.FK_Client_Gender" />
+        <AssociationConnector Association="uchebkaCarServiceEgor2025Model.FK_ClientService_Client" />
+        <AssociationConnector Association="uchebkaCarServiceEgor2025Model.FK_ClientService_Service" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

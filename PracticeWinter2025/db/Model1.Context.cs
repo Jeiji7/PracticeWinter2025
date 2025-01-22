@@ -13,10 +13,10 @@ namespace PracticeWinter2025.db
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class uchebkaCarServiceEgor2025Entities : DbContext
+    public partial class uchebkaCarServiceEgor2025Entities1 : DbContext
     {
-        public uchebkaCarServiceEgor2025Entities()
-            : base("name=uchebkaCarServiceEgor2025Entities")
+        public uchebkaCarServiceEgor2025Entities1()
+            : base("name=uchebkaCarServiceEgor2025Entities1")
         {
         }
     

@@ -68,6 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Scripts\FileManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -300,15 +301,14 @@
     <Resource Include="Clients\service_logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Clients\ArrowBT.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Clients\Egor2.jpg" />
+    <Resource Include="Clients\Kamilla.jpg" />
     <Content Include="db\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

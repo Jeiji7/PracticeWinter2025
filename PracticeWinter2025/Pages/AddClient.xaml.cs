@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using PracticeWinter2025.db;
+using PracticeWinter2025.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,7 +17,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PracticeWinter2025.Pages
 {
@@ -27,7 +27,7 @@ namespace PracticeWinter2025.Pages
     {
         private Client _client = new Client();
         private string selectedImagePath;
-        public string folderName = "";
+        
         public AddClient()
         {
             InitializeComponent();
@@ -74,31 +74,20 @@ namespace PracticeWinter2025.Pages
 
         private void ImagePhotoBT_Click(object sender, RoutedEventArgs e)
         {
-            //var imagesBD = App.db.ServicePhoto.FirstOrDefault(x => x.ID == ser.ServicePhotoID).PhotoPath.ToString();
-            //string folderName = "StudPracticeAutumn2024/Resource";
-            //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-            //string fullPath = System.IO.Path.Combine(projectDirectory, folderName, imagesBD);
-
-            ////Заменяем обратные слеши на прямые слеши
-            //ImageService.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
-            OpenFileDialog openFileDialog = new OpenFileDialog()
+            FileManager fileManager = new FileManager();
+            string relativePath = fileManager.SelectAndCopyImage();
+            if (!string.IsNullOrEmpty(relativePath))
             {
-                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg"
-            };
-            if (openFileDialog.ShowDialog().GetValueOrDefault())
+                // Пример: отображение изображения в интерфейсе
+                ImagePhotoBT.Source = new BitmapImage(new Uri(Path.Combine(fileManager.targetFolder, Path.GetFileName(relativePath))));
+                selectedImagePath = relativePath;
+                fileManager.AddResourceToCsproj(relativePath);
+                // Пример: вывод пути в консоль или сохранение в БД
+                Console.WriteLine($"Image path to save: {relativePath}");
+            }
+            else
             {
-
-                selectedImagePath = openFileDialog.FileName;
-
-                // Ищем индекс папки "Услуги школы" и обрезаем строку
-                int index = selectedImagePath.IndexOf(folderName);
-
-                if (index != -1)
-                {
-                    string result = selectedImagePath.Substring(index);
-                    selectedImagePath = result;
-                }
-                ImagePhotoBT.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                MessageBox.Show("Изображение не выбрано.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }
