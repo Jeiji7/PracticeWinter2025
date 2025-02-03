@@ -27,7 +27,7 @@ namespace PracticeWinter2025.Pages
     {
         private Client _client = new Client();
         private string selectedImagePath;
-        
+
         public AddClient()
         {
             InitializeComponent();
@@ -65,11 +65,11 @@ namespace PracticeWinter2025.Pages
                 MessageBox.Show("Данные успешно добавлены");
                 NavigationService.Navigate(new Pages.NavigationPage());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-        
+
         }
 
         private void ImagePhotoBT_Click(object sender, RoutedEventArgs e)
@@ -81,7 +81,13 @@ namespace PracticeWinter2025.Pages
                 // Пример: отображение изображения в интерфейсе
                 ImagePhotoBT.Source = new BitmapImage(new Uri(Path.Combine(fileManager.targetFolder, Path.GetFileName(relativePath))));
                 selectedImagePath = relativePath;
-                fileManager.AddResourceToCsproj(relativePath);
+
+                string projectFolderPath = @"C:\Path\To\Your\Project"; // Путь к папке проекта
+                string filePath = @"Clients\photoOne.png";             // Относительный путь к файлу
+                string projectFileName = "PracticeWinter2025.csproj";  // Имя csproj файла
+
+                AddFileToCsproj(filePath, projectFolderPath, projectFileName);
+
                 // Пример: вывод пути в консоль или сохранение в БД
                 Console.WriteLine($"Image path to save: {relativePath}");
             }
