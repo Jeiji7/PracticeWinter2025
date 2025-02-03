@@ -50,6 +50,7 @@ namespace PracticeWinter2025.Pages
 
             //ImagePhotoBT.Source = new BitmapImage(new Uri(Path.Combine(fullPath, Path.GetFileName(imagesBD))));
             ImagePhotoBT.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
+            selectedImagePath = client.PhotoPath.ToString();
         }
 
         private void Button_Click_SaveData(object sender, RoutedEventArgs e)
@@ -84,21 +85,21 @@ namespace PracticeWinter2025.Pages
 
         private void ImagePhotoBT_Click(object sender, RoutedEventArgs e)
         {
-            FileManager fileManager = new FileManager();
-            string relativePath = fileManager.SelectAndCopyImage();
-            if (!string.IsNullOrEmpty(relativePath))
-            {
-                // Пример: отображение изображения в интерфейсе
-                ImagePhotoBT.Source = new BitmapImage(new Uri(System.IO.Path.Combine(fileManager.targetFolder, Path.GetFileName(relativePath))));
-                selectedImagePath = relativePath;
-                fileManager.AddResourceToCsproj(relativePath);
-                // Пример: вывод пути в консоль или сохранение в БД
-                Console.WriteLine($"Image path to save: {relativePath}");
-            }
-            else
-            {
-                MessageBox.Show("Изображение не выбрано.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+        //    FileManager fileManager = new FileManager();
+        //    string relativePath = fileManager.SelectAndCopyImage();
+        //    if (!string.IsNullOrEmpty(relativePath))
+        //    {
+        //        // Пример: отображение изображения в интерфейсе
+        //        ImagePhotoBT.Source = new BitmapImage(new Uri(System.IO.Path.Combine(fileManager.targetFolder, Path.GetFileName(relativePath))));
+        //        selectedImagePath = relativePath;
+        //        fileManager.AddResourceToCsproj(relativePath);
+        //        // Пример: вывод пути в консоль или сохранение в БД
+        //        Console.WriteLine($"Image path to save: {relativePath}");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Изображение не выбрано.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //    }
         }
 
         private void Button_Click_Exit(object sender, RoutedEventArgs e)

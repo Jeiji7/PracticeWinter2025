@@ -1,12 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Xml.Linq;
 
 namespace PracticeWinter2025.Scripts
 {
@@ -14,17 +9,19 @@ namespace PracticeWinter2025.Scripts
     {
         string folderName = "PracticeWinter2025/Clients";
         string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+        string binDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Clients"); // Путь до bin/Debug/Clients
         public string targetFolder;
+
         public FileManager()
         {
-            // Формируем полный путь к целевой папке
             targetFolder = Path.Combine(projectDirectory, folderName);
 
-            // Создаем целевую папку, если её нет
+            // Создание папок, если их нет
             if (!Directory.Exists(targetFolder))
-            {
                 Directory.CreateDirectory(targetFolder);
-            }
+
+            if (!Directory.Exists(binDirectory))
+                Directory.CreateDirectory(binDirectory);
         }
 
         public string SelectAndCopyImage()
@@ -39,16 +36,17 @@ namespace PracticeWinter2025.Scripts
                 string sourcePath = openFileDialog.FileName;
                 string fileName = Path.GetFileName(sourcePath);
                 string destinationPath = Path.Combine(targetFolder, fileName);
+                string binPath = Path.Combine(binDirectory, fileName);
 
                 try
                 {
-                    // Копируем файл в целевую папку
+                    // Копирование в папку проекта
                     File.Copy(sourcePath, destinationPath, overwrite: true);
-                    
-                    // Сообщаем, что нужно обновить проект
-                    Console.WriteLine("Файл успешно скопирован. Обновите проект в Visual Studio!");
+                    // Копирование в bin/Debug/Clients
+                    File.Copy(sourcePath, binPath, overwrite: true);
 
-                    // Возвращаем относительный путь
+                    Console.WriteLine("Файл успешно скопирован в обе папки!");
+
                     return $"/Clients/{fileName}";
                 }
                 catch (Exception ex)
@@ -58,55 +56,6 @@ namespace PracticeWinter2025.Scripts
             }
 
             return null;
-        }
-        public void AddResourceToCsproj(string filePath)
-        {
-            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-            string projectFilePath = Path.Combine(projectDirectory, $"{Path.GetFileName(projectDirectory)}.csproj");
-
-            if (!File.Exists(projectFilePath))
-            {
-                Console.WriteLine("Файл проекта (.csproj) не найден.");
-                return;
-            }
-
-            try
-            {
-                XDocument projectFile = XDocument.Load(projectFilePath);
-
-                // Находим или создаем ItemGroup
-                XElement itemGroup = projectFile.Root.Elements("ItemGroup")
-                    .FirstOrDefault(e => e.Elements("Resource").Any())
-                    ?? new XElement("ItemGroup");
-
-                if (itemGroup.Parent == null)
-                {
-                    projectFile.Root.Add(itemGroup); // Добавляем ItemGroup в корень, если его не было
-                }
-
-                string relativePath = filePath.Replace("\\", "/"); // Убираем лишние обратные слэши
-
-                // Проверяем, существует ли уже ресурс
-                bool fileExists = itemGroup.Elements("Resource").Any(e =>
-                    e.Attribute("Include")?.Value == relativePath);
-
-                if (!fileExists)
-                {
-                    XElement resourceElement = new XElement("Resource", new XAttribute("Include", relativePath));
-                    itemGroup.Add(resourceElement);
-
-                    projectFile.Save(projectFilePath);
-                    Console.WriteLine($"Файл добавлен в проект как ресурс: {relativePath}");
-                }
-                else
-                {
-                    Console.WriteLine($"Файл уже существует в проекте как ресурс: {relativePath}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка при добавлении файла в проект: {ex.Message}");
-            }
         }
     }
 }

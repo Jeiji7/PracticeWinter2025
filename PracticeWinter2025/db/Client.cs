@@ -11,7 +11,9 @@ namespace PracticeWinter2025.db
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+    using System.Windows.Media.Imaging;
+
     public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,7 +33,30 @@ namespace PracticeWinter2025.db
         public int GenderCode { get; set; }
         public string PhotoPath { get; set; }
         public Nullable<bool> ActiceClient { get; set; }
-    
+
+
+        public BitmapImage PhotoSource
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(PhotoPath))
+                {
+                    string absolutePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, PhotoPath.TrimStart('/').Replace("/", "\\"));
+                    if (File.Exists(absolutePath))
+                    {
+                        return new BitmapImage(new Uri(absolutePath, UriKind.Absolute));
+                    }
+                }
+                // Заглушка, если файл не найден
+                string placeholderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Clients\\default.jpg");
+                if (File.Exists(placeholderPath))
+                {
+                    return new BitmapImage(new Uri(placeholderPath, UriKind.Absolute));
+                }
+                return null;
+            }
+        }
+
         public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientService> ClientService { get; set; }

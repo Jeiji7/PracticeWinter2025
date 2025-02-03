@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PracticeWinter2025.Pages
 {
@@ -26,7 +26,23 @@ namespace PracticeWinter2025.Pages
         public ClientList()
         {
             InitializeComponent();
-            ListClientLV.ItemsSource = App.db.Client.Where(x => x.ActiceClient == true).ToList();
+            //ListClientLV.ItemsSource = App.db.Client.Where(x => x.ActiceClient == true).ToList();
+            var clients = App.db.Client.Where(x => x.ActiceClient == true).ToList();
+
+            // Проверяем пути к файлам
+            foreach (var client in clients)
+            {
+                if (!string.IsNullOrEmpty(client.PhotoPath))
+                {
+                    string absolutePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, client.PhotoPath.TrimStart('/'));
+                    if (!File.Exists(absolutePath))
+                    {
+                        client.PhotoPath = "/Clients/default.jpg"; // Заглушка, если фото не найдено
+                    }
+                }
+            }
+
+            ListClientLV.ItemsSource = clients;
         }
 
         private void Button_Click_Exit(object sender, RoutedEventArgs e)
