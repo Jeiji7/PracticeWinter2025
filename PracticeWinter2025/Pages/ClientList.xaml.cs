@@ -28,7 +28,6 @@ namespace PracticeWinter2025.Pages
             InitializeComponent();
             //ListClientLV.ItemsSource = App.db.Client.Where(x => x.ActiceClient == true).ToList();
             var clients = App.db.Client.Where(x => x.ActiceClient == true).ToList();
-
             // Проверяем пути к файлам
             foreach (var client in clients)
             {
@@ -43,6 +42,12 @@ namespace PracticeWinter2025.Pages
             }
 
             ListClientLV.ItemsSource = clients;
+
+            var gender = App.db.Gender.ToList();
+            gender.Insert(0, new Gender { Code = 0, Name = "Все" });
+            GenderCB.ItemsSource = gender.ToList();
+            GenderCB.DisplayMemberPath = "Name";
+            GenderCB.SelectedIndex = 0;
         }
 
         private void Button_Click_Exit(object sender, RoutedEventArgs e)
@@ -81,5 +86,42 @@ namespace PracticeWinter2025.Pages
                 MessageBox.Show("Вы не выбрали сотрудника для изменения!");
             }
         }
+
+        private void GenderCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (GenderCB.SelectedIndex)
+            {
+                case 0:
+                    ListClientLV.ItemsSource = App.db.Client.ToList();
+                    break;
+                case 1:
+                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 1).ToList();
+                    break;
+                case 2:
+                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 2).ToList();
+                    break;
+            }
+        }
+
+        public void SortGender()
+        {
+            switch (GenderCB.SelectedIndex)
+            {
+                case 0:
+                    ListClientLV.ItemsSource = App.db.Client.Where(x=> x.LastName.StartsWith(SearchNameTB.Text)).ToList();
+                    break;
+                case 1:
+                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 1 && x.LastName.StartsWith(SearchNameTB.Text)).ToList();
+                    break;
+                case 2:
+                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 2  && x.LastName.StartsWith(SearchNameTB.Text)).ToList();
+                    break;
+            }
+        }
+        private void TextBox_TextChanged_SearchName(object sender, TextChangedEventArgs e)
+        {
+            ListClientLV.ItemsSource = App.db.Client.Where(i => i.LastName.StartsWith(SearchNameTB.Text) && i.GenderCode == GenderCB.SelectedIndex).ToList();
+        }
     }
+
 }

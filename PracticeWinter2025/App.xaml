@@ -13,5 +13,16 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Background" Value="#ffffe1"/>
         </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </Application.Resources>
 </Application>

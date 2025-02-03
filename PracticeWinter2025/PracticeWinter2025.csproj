@@ -202,6 +202,8 @@
     <Content Include="Clients\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Logo\ArrowBT.png" />
+    <Resource Include="Logo\service_logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Clients\1.jpg" />
@@ -304,8 +306,6 @@
     <Resource Include="Clients\m97.jpg" />
     <Resource Include="Clients\m98.jpg" />
     <Resource Include="Clients\m99.jpg" />
-    <Resource Include="Clients\ArrowBT.png" />
-    <Resource Include="Clients\crossButton.png" />
     <Content Include="db\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

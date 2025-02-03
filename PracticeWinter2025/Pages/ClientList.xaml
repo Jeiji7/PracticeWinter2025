@@ -14,9 +14,13 @@
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock FontSize="40">Список клиентов</TextBlock>
+        <TextBlock FontSize="24">Список клиентов</TextBlock>
+        <StackPanel Orientation="Vertical" Width="180" Height="80" Margin="100 5 0 0" HorizontalAlignment="Left">
+                <TextBlock FontSize="18">Поиск по имени</TextBlock>
+                <TextBox FontSize="14" x:Name="SearchNameTB" Height="40" Width="170" TextChanged="TextBox_TextChanged_SearchName"></TextBox>
+        </StackPanel>
         <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10 0" Click="Button_Click_Exit">
-            <Image Source="/Clients/ArrowBT.png"/>
+            <Image Source="/Logo/ArrowBT.png"/>
         </Button>
         <Button Width="60" Height="40" HorizontalAlignment="Right" Margin="10 0" Background="IndianRed" Click="Button_Click_Delete">
             Удалить
@@ -24,6 +28,10 @@
         <Button Width="60" Height="40" HorizontalAlignment="Right" Margin="10 0 80 0" Background="GreenYellow" Click="Button_Click_Edit">
             Изменить
         </Button>
+        <StackPanel Orientation="Vertical" Width="140" Height="80" Margin="10 0 160 0" HorizontalAlignment="Right">
+            <TextBlock FontSize="20">Пол</TextBlock>
+            <ComboBox x:Name="GenderCB" Width="120" Height="40" DisplayMemberPath="Name" SelectionChanged="GenderCB_SelectionChanged"></ComboBox>
+        </StackPanel>
         <ListView Grid.Row="1" Margin="5" x:Name="ListClientLV">
             <ListView.View>
                 <GridView>

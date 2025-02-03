@@ -16,7 +16,7 @@
 
         <TextBlock FontSize="40">Панель навигации</TextBlock>
         <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10 0" Click="Button_Click_Exit">
-            <Image Source="/Clients/ArrowBT.png"/>
+            <Image Source="/Logo/ArrowBT.png"/>
         </Button>
 
         <Border Grid.Row="1" BorderBrush="#ff9c1a" BorderThickness="1.5" Margin="5,5,5,5">

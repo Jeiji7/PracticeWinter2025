@@ -16,7 +16,7 @@
 
         <TextBlock FontSize="40">Записи на услуги</TextBlock>
         <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10 0" Click="Button_Click_Exit">
-            <Image Source="/Clients/ArrowBT.png"/>
+            <Image Source="/Logo/ArrowBT.png"/>
         </Button>
         <ListView Grid.Row="1" Margin="5" x:Name="ListRecordServiceLV">
             <ListView.View>
