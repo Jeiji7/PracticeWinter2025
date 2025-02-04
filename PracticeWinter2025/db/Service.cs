@@ -25,6 +25,7 @@ namespace PracticeWinter2025.db
         public decimal Cost { get; set; }
         public int DurationInSeconds { get; set; }
         public Nullable<double> Discount { get; set; }
+        public Nullable<bool> ActiveService { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientService> ClientService { get; set; }

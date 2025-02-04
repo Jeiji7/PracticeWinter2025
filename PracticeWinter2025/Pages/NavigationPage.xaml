@@ -10,8 +10,8 @@
 
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="82*"/>
         </Grid.RowDefinitions>
 
         <TextBlock FontSize="40">Панель навигации</TextBlock>
@@ -33,7 +33,9 @@
                 <Button Height="50" Width="200" Click="Button_Click_Record">
                     <TextBlock FontSize="20" Text="Записать на услугу"/>
                 </Button>
-                
+                <Button Height="50" Width="200" Click="Button_Click_Service">
+                    <TextBlock FontSize="20" Text="Услуги"/>
+                </Button>
             </StackPanel>
 
         </Border>

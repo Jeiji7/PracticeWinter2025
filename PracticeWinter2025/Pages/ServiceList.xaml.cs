@@ -22,6 +22,7 @@ namespace PracticeWinter2025.Pages
     /// </summary>
     public partial class ServiceList : Page
     {
+        
         public ServiceList()
         {
             InitializeComponent();
@@ -46,5 +47,7 @@ namespace PracticeWinter2025.Pages
         {
             NavigationService.Navigate(new Pages.NavigationPage());
         }
+
+       
     }
 }

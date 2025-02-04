@@ -34,7 +34,6 @@ namespace PracticeWinter2025.db
         public string PhotoPath { get; set; }
         public Nullable<bool> ActiceClient { get; set; }
 
-
         public BitmapImage PhotoSource
         {
             get
@@ -56,7 +55,6 @@ namespace PracticeWinter2025.db
                 return null;
             }
         }
-
         public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientService> ClientService { get; set; }

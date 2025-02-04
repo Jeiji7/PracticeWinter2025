@@ -92,35 +92,38 @@ namespace PracticeWinter2025.Pages
             switch (GenderCB.SelectedIndex)
             {
                 case 0:
-                    ListClientLV.ItemsSource = App.db.Client.ToList();
+                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.LastName.StartsWith(SearchNameTB.Text) && x.ActiceClient == true).ToList();
                     break;
                 case 1:
-                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 1).ToList();
+                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 1 && x.LastName.StartsWith(SearchNameTB.Text) && x.ActiceClient == true).ToList();
                     break;
                 case 2:
-                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 2).ToList();
+                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 2 && x.LastName.StartsWith(SearchNameTB.Text) && x.ActiceClient == true).ToList();
                     break;
             }
         }
 
-        public void SortGender()
-        {
-            switch (GenderCB.SelectedIndex)
-            {
-                case 0:
-                    ListClientLV.ItemsSource = App.db.Client.Where(x=> x.LastName.StartsWith(SearchNameTB.Text)).ToList();
-                    break;
-                case 1:
-                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 1 && x.LastName.StartsWith(SearchNameTB.Text)).ToList();
-                    break;
-                case 2:
-                    ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 2  && x.LastName.StartsWith(SearchNameTB.Text)).ToList();
-                    break;
-            }
-        }
+        //public void SortGender()
+        //{
+        //    switch (GenderCB.SelectedIndex)
+        //    {
+        //        case 0:
+        //            ListClientLV.ItemsSource = App.db.Client.Where(x=> x.LastName.StartsWith(SearchNameTB.Text)).ToList();
+        //            break;
+        //        case 1:
+        //            ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 1 && x.LastName.StartsWith(SearchNameTB.Text)).ToList();
+        //            break;
+        //        case 2:
+        //            ListClientLV.ItemsSource = App.db.Client.Where(x => x.Gender.Code == 2  && x.LastName.StartsWith(SearchNameTB.Text)).ToList();
+        //            break;
+        //    }
+        //}
         private void TextBox_TextChanged_SearchName(object sender, TextChangedEventArgs e)
         {
-            ListClientLV.ItemsSource = App.db.Client.Where(i => i.LastName.StartsWith(SearchNameTB.Text) && i.GenderCode == GenderCB.SelectedIndex).ToList();
+            if (GenderCB.SelectedIndex == 0)
+                ListClientLV.ItemsSource = App.db.Client.Where(i => i.LastName.StartsWith(SearchNameTB.Text) && i.ActiceClient == true).ToList();
+            else
+                ListClientLV.ItemsSource = App.db.Client.Where(i => i.LastName.StartsWith(SearchNameTB.Text) && i.GenderCode == GenderCB.SelectedIndex && i.ActiceClient == true).ToList();
         }
     }
 

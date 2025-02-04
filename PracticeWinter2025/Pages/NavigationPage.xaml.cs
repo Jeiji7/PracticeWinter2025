@@ -50,5 +50,10 @@ namespace PracticeWinter2025.Pages
         {
             NavigationService.Navigate(new Pages.AddClient());
         }
+
+        private void Button_Click_Service(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.ServiceListPage());
+        }
     }
 }
